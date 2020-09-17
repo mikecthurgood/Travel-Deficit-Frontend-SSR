@@ -1,0 +1,145 @@
+
+body {
+  background-color: #ffffff;
+  height: 100%;
+
+}
+.site {
+  text-align: center;
+  font-family: 'Muli', sans-serif;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  /* max-width: 1200px; */
+  justify-content: center;
+  background-color: white;
+  /* overflow: hidden; */
+}
+
+html {
+  height: 100%;
+}
+
+.hide-map-popup-country-name {
+  visibility: hidden;
+}
+
+path {
+  fill: #4953da;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    fill:  #5d65d6;
+  }
+
+  &:focus {
+    fill: rgba(168,43,43,0.6);
+  }
+
+  &[aria-checked='true'] {
+    fill: #e68b24;
+  }
+
+  &[aria-current='true'] {
+    fill: rgba(56,43,168,0.83);
+  }
+
+  &[id="nz-can"] {
+    fill: rgba(56,43,168,0.6);
+  }
+}
+
+.site-body {
+  margin-top: 120px;
+  max-height: calc(100vh - 120px);
+}
+
+.footer {
+  min-height: 100px;
+  background-color: #282c34;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
+.home-page-title {
+  position: relative;
+  top: 20px;
+  a {
+    color: #4953da;
+
+    &:hover {
+      color: #e68b24;
+    }
+  }
+}
+
+.home-page-map {
+  background-color: white;
+  height: calc(100vh - 120px);
+  transition: 1.0s;
+  z-index: 50;
+  position: relative;
+  top: -25px;
+  overflow: hidden;
+
+  #chartdiv {
+    height: fit-content !important;
+    position: relative;
+    top: 20px;
+    .fOWsaB {
+      margin-top: 0;
+    }
+  }
+}
+
+// .home-page-map-with-stats {
+//   background-color: white;
+//   width: 100%;
+//   transition: 1.0s;
+//   z-index: 50;
+// }
+
+svg {
+  max-height: calc(100vh - 180px);
+}
+
+.hidden {
+  visibility: hidden;
+}
+/* 
+.user-link {
+  padding-left: 2%;
+  position: absolute;
+  top: 40%;
+  left: 2%;
+  text-decoration: none;
+  color: white;
+} */
+
+.user-link:hover {
+  color: #e68b24
+}
+
+.home-page-container {
+  width: 100%;
+  /* color: white; */
+}
+
+.App {
+  min-width: 100%;
+  max-width: 1400px;
+}
+
+.show-map-popup-country-name {
+  background-color: white;
+  border: solid 1px grey;
+  font-size: medium;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+
+

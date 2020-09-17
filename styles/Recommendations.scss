@@ -1,0 +1,41 @@
+.recommendations-page-container {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: fit-content;
+    padding-left: 20px;
+    justify-content: center;
+    
+}
+
+.recommendation-card {
+    /* height: 100%; */
+    margin: 10px !important;
+    min-width: 30% !important;
+
+}
+
+.country-image-container {
+    height: 250px;
+    overflow: hidden;
+    padding-left: 20px !important;
+}
+
+.country-image-inner-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.suggested-trip {
+    text-align: left;
+}
+
+.wishlist {
+    width: 100%;
+}
+
+.country-image {
+ height: 100%;
+}

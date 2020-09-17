@@ -1,0 +1,24 @@
+// @import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Muli', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100%
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  font-family: 'Muli', sans-serif;
+}

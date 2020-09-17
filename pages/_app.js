@@ -1,4 +1,11 @@
-import '../styles/globals.css'
+import '../styles/globals.scss'
+import '../styles/Home.scss'
+import '../styles/AddCountry.scss'
+import '../styles/App.scss'
+import '../styles/CountryCard.scss'
+import '../styles/Login.scss'
+import '../styles/NavBar.scss'
+import '../styles/Recommendations.scss'
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />

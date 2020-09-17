@@ -1,0 +1,119 @@
+.country-list {
+    color: white;
+    width: 40%;
+    position: relative;
+    top: 30px;
+    justify-content: center;
+    height: 60%;
+    min-width: 343px;
+
+    /* overflow-y: hidden; */ 
+  }
+
+  .filter-button {
+    width: 33.3%;
+    margin-left: 1px;
+    min-width: 114px;
+  }
+
+
+  .country-list-page-title {
+    color: white;
+    overflow: visible;
+    padding-bottom: 5px;
+    width: 100%;
+    min-width: 343px;
+  }
+
+  .country-list-page-title a {
+    color: gold;
+  }
+
+  .country-list-page-title a:hover {
+    color: #e68b24;
+  }
+
+  .filter-button:first-child {
+    width: 33.3%;
+    margin-left: 0px;
+  }
+
+  .country-list-container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* min-height: 865px; */
+  }
+
+  .filter-button Button {
+    border-radius: 0 !important;
+  }
+
+  .country-list-items {
+    height: 75vh;
+    margin-bottom: 20px;
+    width: 100%;
+    min-width: 343px;
+    overflow-y: scroll;
+  }
+
+  .country-list-items::-webkit-scrollbar {
+    width: 0;
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  
+  .country-item {
+    width: 100%;
+    min-width: 343px;
+    background-color: #e68b24;
+    margin-top: 3px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.5s;
+  }
+  
+  .country-item:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
+    background-color: #616ae7;
+    transition: 0.3s;
+  }
+  
+  .visited-country-item {
+    width: 100%;
+    min-width: fit-content;
+    background-color: #282c34;
+    margin-top: 3px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    min-width: 343px;
+
+  }
+  
+  .visited-country-item:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
+    background-color: #79808f;
+    transition: 0.3s;
+  }
+  
+  .remove-country-item:hover button {
+    background-color: #616ae7;
+  }
+  
+  .remove-country-button {
+    float: right;
+    background-color: #e68b24;
+    border-radius: 50%;
+    color: white;
+    margin-right: 1%;
+  }
+  
+  #add-country-search-filter {
+    width: 100%;
+    min-width: 343px;
+
+  }

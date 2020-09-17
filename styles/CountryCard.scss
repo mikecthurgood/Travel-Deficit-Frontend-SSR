@@ -1,0 +1,95 @@
+.country-card {
+    text-align: left;
+    overflow: hidden !important;
+    margin-top: 5px !important;
+  }
+  
+  .add-country-button {
+    background-color: #e68b24 !important;
+    /* border-radius: 0 !important; */
+    width: 100% !important;
+    margin-right: 0 !important;
+  }
+
+  .close-sidebar-button {
+    /* border-radius: 0 !important; */
+    width: 100% !important;
+  }
+  
+  .add-to-wish-list {
+    background-color: #616ae7 !important;
+    /* border-radius: 0 !important; */
+  }
+
+  .side-panel-accordion {
+      transition: 2s !important;
+  }
+
+  .stats-sidebar {
+    height: calc(100vh - 120px);
+    width: 35%;
+    background-color: white;
+    transition: right 0.6s ease-out;
+    position: fixed;
+    right: 0;
+    top: 120px;
+    z-index: 20;
+    overflow-y: scroll;
+    background-color: gray;
+    border-style: solid;
+    border-color: gray;
+    opacity: 1;
+  }
+
+  .stats-sidebar::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  /* Track */
+  .stats-sidebar::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey; 
+      border-radius: 10px;
+  }
+
+  /* Handle */
+  .stats-sidebar::-webkit-scrollbar-thumb {
+      background: #ED5656; 
+      border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  .stats-sidebar::-webkit-scrollbar-thumb:hover {
+      background: #cf4b4b; 
+  }
+
+  
+
+  .country-card-content {
+    width: 100%
+  }
+  
+  .sidebar-hidden {
+    /* height: 0; */
+    // width: 0;
+    /* transition: 1.0s; */
+    position: sticky;
+    height: 0;
+    right: -35%;
+    top: 120px;
+    opacity: 0;
+    // z-index: 20;
+    transition: opacity 0.6s ease-in;
+    button {
+      visibility: hidden;
+    }
+  }
+
+  .flag {
+    border-style: solid;
+    border-color: rgba(0,0,0,0.2);
+    height: 200px;
+  }
+
+  .country-card-header {
+    width: 100%;
+  }
