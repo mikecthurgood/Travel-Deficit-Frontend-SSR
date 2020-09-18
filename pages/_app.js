@@ -6,6 +6,7 @@ import '../styles/CountryCard.scss'
 import '../styles/Login.scss'
 import '../styles/NavBar.scss'
 import '../styles/Recommendations.scss'
+import '../styles/Profile.scss'
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />
