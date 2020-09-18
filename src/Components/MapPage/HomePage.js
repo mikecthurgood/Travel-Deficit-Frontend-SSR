@@ -3,7 +3,7 @@ import CountryCard from '../SidePanel/CountryCard'
 import WorldMapView from './WorldMapView'
 import Link from 'next/link'
 
-const HomePage = ({ selectedCountry, handleMapClick, visitedCountries, sidebarVisible, closeSideBar, handleSideBarAccordionClick, activeIndex, addOrRemoveCountry, countryNamePopUp, countryNamePopUpValue, mouseXPosition, mouseYPosition, mousePosition, handleHover, addToWishList, wishlist }) => (
+const HomePage = ({ selectedCountry, handleMapClick, visitedCountries, sidebarVisible, closeSideBar, handleSideBarAccordionClick, activeIndex, addOrRemoveCountry, countryNamePopUp, countryNamePopUpValue, mouseXPosition, mouseYPosition, mousePosition, handleHover, addToWishList, wishlist, page }) => (
 
     <div className='home-page-container'>
         <div className='home-page-map'>
@@ -29,6 +29,7 @@ const HomePage = ({ selectedCountry, handleMapClick, visitedCountries, sidebarVi
                 sidebarVisible={sidebarVisible}
                 addToWishList={addToWishList}
                 wishlist={wishlist}
+                page={page}
             />
         </div>
     </div>

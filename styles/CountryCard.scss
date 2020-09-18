@@ -1,95 +1,194 @@
-.country-card {
-    text-align: left;
-    overflow: hidden !important;
-    margin-top: 5px !important;
-  }
+.stats-sidebar {
+  height: calc(100vh - 120px);
+  width: 35%;
+  min-width: 550px;
+  transition: right 0.6s ease-out;
+  right: -70vw;
+  position: fixed;
+  top: 120px;
+  z-index: 20;
+  background-color: whitesmoke;
+  border: solid 1px gray;
+  opacity: 10.99;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   
-  .add-country-button {
-    background-color: #e68b24 !important;
-    /* border-radius: 0 !important; */
-    width: 100% !important;
-    margin-right: 0 !important;
+  &.visible {
+    right: 0;
+    transition: right 0.6s ease-in;
   }
 
   .close-sidebar-button {
-    /* border-radius: 0 !important; */
-    width: 100% !important;
-  }
-  
-  .add-to-wish-list {
-    background-color: #616ae7 !important;
-    /* border-radius: 0 !important; */
-  }
-
-  .side-panel-accordion {
-      transition: 2s !important;
-  }
-
-  .stats-sidebar {
     height: calc(100vh - 120px);
-    width: 35%;
-    background-color: white;
-    transition: right 0.6s ease-out;
-    position: fixed;
-    right: 0;
-    top: 120px;
-    z-index: 20;
-    overflow-y: scroll;
-    background-color: gray;
-    border-style: solid;
-    border-color: gray;
-    opacity: 1;
-  }
-
-  .stats-sidebar::-webkit-scrollbar {
-    width: 0px;
-  }
-
-  /* Track */
-  .stats-sidebar::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 5px grey; 
-      border-radius: 10px;
-  }
-
-  /* Handle */
-  .stats-sidebar::-webkit-scrollbar-thumb {
-      background: #ED5656; 
-      border-radius: 10px;
-  }
-
-  /* Handle on hover */
-  .stats-sidebar::-webkit-scrollbar-thumb:hover {
-      background: #cf4b4b; 
-  }
-
-  
-
-  .country-card-content {
-    width: 100%
-  }
-  
-  .sidebar-hidden {
-    /* height: 0; */
-    // width: 0;
-    /* transition: 1.0s; */
-    position: sticky;
-    height: 0;
-    right: -35%;
-    top: 120px;
-    opacity: 0;
-    // z-index: 20;
-    transition: opacity 0.6s ease-in;
-    button {
-      visibility: hidden;
+    width: 20px;
+    text-align: center;
+    padding: 0;
+    margin-right: 5px;
+    // background-color: #e68b24;
+    filter: brightness(100%);
+    border: none;
+    transition: background-color 0.1s ease-in;
+    font-weight: bold;
+    font-size: 25px;
+    &:active, &:focus {
+      outline: none;
+      text-decoration: none;
+    }
+    &:hover {
+      background-color: #616ae7;
+      color: white;
+      transition: background-color 0.1s ease-in;
     }
   }
 
-  .flag {
-    border-style: solid;
-    border-color: rgba(0,0,0,0.2);
-    height: 200px;
+  .side-bar-content-container {
+    width: calc(100% - 20px);
+      .sidepanel-buttons {
+        position: absolute;
+        bottom: 0;
+        width: 94% !important;
+        width: calc(100% - 20px);
+    
+        .add-country-button {
+          background-color: #e68b24;
+          width: 50%;
+          margin-right: 0;
+          color: white;
+          padding: 15px;
+          font-weight: bold;
+          &.added {
+            width: 100%;
+          }
+          &:active, &:focus {
+            outline: none;
+            text-decoration: none;
+          }
+          &:hover {
+            filter: brightness(110%);
+          }
+        }
+        
+        .add-to-wishlist-button {
+          background-color: #616ae7;
+          width: 50%;
+          margin-right: 0;
+          color: white;
+          padding: 15px;
+          font-weight: bold;
+          &:active, &:focus {
+            outline: none;
+            text-decoration: none;
+          }
+          &:hover {
+            filter: brightness(110%);
+          }
+        }
+      }
+
+      .side-panel-content {
+        height: calc(100vh - 120px);
+
+        .country-card-header {
+          height: 40px;
+          width: 80%;
+          margin: 15px 10%;
+          .flag {
+            // border-style: solid;
+            // border-color: rgba(0,0,0,0.2);
+            max-height: 40px;
+            max-width: 80%;
+          }
+          span {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+          }
+          h2, h4 {
+            margin: auto;
+            text-align: center;
+          }
+        }
+      
+        .country-tabs {
+          display: flex;
+          flex-wrap: nowrap;
+          flex-direction: row;
+          justify-content: center;
+          width: 99%;
+          height: 50px;
+          span {
+            display: flex;
+            background-color:  #4953da;
+            color: white;
+            flex-direction: column;
+            justify-content: center;
+            height: 50px;
+            border: 1px solid gray;
+            width: 50%;
+            text-align: center;
+            cursor: pointer;
+            &:hover {
+              filter: brightness(110%);
+            }
+            h4 {
+              margin: auto;
+            }
+          }
+        }
+      
+        .country-content {
+          overflow-y: scroll;
+          height: calc(100vh - 290px);
+          .country-stats, .country-description {
+            position: relative;
+            top: 0;
+            text-align: justify;
+            opacity: 0;
+            padding: 0;
+            p {
+              display: none;
+            }
+            &.visible {
+              padding: 10px;
+              opacity: 1;
+              transition: opacity 0.6s ease-in;
+              p {
+                display: block;
+              }
+            }
+          }
+          .country-description {
+            p {
+              margin: 0;
+            }
+          }
+      }
+      
+    
+      }
+    }
   }
 
-  .country-card-header {
-    width: 100%;
-  }
+.country-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.country-content::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+/* Handle */
+.country-content::-webkit-scrollbar-thumb {
+    background:#e68b24; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.country-content::-webkit-scrollbar-thumb:hover {
+    background: #e68b24; 
+}

@@ -1,65 +1,66 @@
 import React from 'react'
-import SidePanelAccordion from './SidePanelAccordion'
+import SidePanel from './SidePanel'
 
-import { Button } from 'semantic-ui-react'
+// import { Button } from 'semantic-ui-react'
 
 
-const CountryCard = ({ country, closeSideBar, handleClick, activeIndex, addOrRemoveCountry, visitedCountries, sidebarVisible, selectedCountry, addToWishList, wishlist }) => {
+const CountryCard = ({ country, closeSideBar, addOrRemoveCountry, visitedCountries, sidebarVisible, selectedCountry, addToWishList, wishlist, page }) => {
 
     return (
-        <div className={selectedCountry && sidebarVisible ? 'stats-sidebar' : 'sidebar-hidden'}>
-            <div className={sidebarVisible ? 'country-card-content' : 'sidebar-hidden'}>
-                <Button fluid
-                    className='close-sidebar-button'
-                    onClick={closeSideBar}>
-                    Close
-                </Button>
+        (page === 'home' || page === 'list-view') && (
+            
+            <div className={`stats-sidebar ${selectedCountry && sidebarVisible ? 'visible' : ''}`}>
+                <div>
+                    <button
+                        className='close-sidebar-button'
+                        onClick={closeSideBar}>
+                        ▶<br /><br /><br /><br /><br /><br /><br /><br />▶
+                    </button>
+                </div>
                 {country &&
-                    <div>
-                        <Button
-                            fluid className='add-country-button'
-                            onClick={() => addOrRemoveCountry(country.name)}
-                        >
-                            {!visitedCountries.includes(country.code) ? 'Add To Visited' : 'Remove From Visited'}
-                        </Button>
-                        {!visitedCountries.includes(country.code) &&
-                            <Button fluid
-                                className='add-to-wish-list'
-                                onClick={() => addToWishList(country.id)}
-                            >
-                                {!wishlist.includes(country.id) ? 'I Want To Go Here' : 'Remove From Wishlist'}
-                            </Button>}
-
-                        <SidePanelAccordion
-                            handleClick={handleClick}
-                            activeIndex={activeIndex}
+                <div className='side-bar-content-container'>
+                        <SidePanel
                             country={country}
                         />
-                        <Button
+                    <div className='sidepanel-buttons'>
+                        <button
+                            className={`add-country-button ${visitedCountries.includes(country.code) ? 'added' : ''}`}
+                            onClick={() => addOrRemoveCountry(country.name)}
+                        >
+                            {!visitedCountries.includes(country.code) ? 'Add To Visited' : 'Remove From Visited'}
+                        </button>
+                        {!visitedCountries.includes(country.code) &&
+                            <button                                 className='add-to-wishlist-button'
+                                onClick={() => addToWishList(country.id)}
+                            >
+                                {!wishlist.includes(country.id) ? 'Add To Wishlist' : 'Remove From Wishlist'}
+                            </button>}
+                        
+                        </div>
+    
+                        {/* <button
                             fluid className='add-country-button'
                             onClick={() => addOrRemoveCountry(country.name)}
                         >
                             {!visitedCountries.includes(country.code) ? 'Add To Visited' : 'Remove From Visited'}
-                        </Button>
+                        </button>
                         {!visitedCountries.includes(country.code) &&
-                            <Button fluid
+                            <button fluid
                                 className='add-to-wish-list'
                                 onClick={() => addToWishList(country.id)}
                             >
                                 {!wishlist.includes(country.id) ? 'I Want To Go Here' : 'Remove From Wishlist'}
-                            </Button>}
-                        <Button fluid
+                            </button>}
+                        <button fluid
                             className='close-sidebar-button'
                             onClick={closeSideBar}>
                             Close
-                        </Button>
-
-                    </div>
-
+                        </button> */}
+                        </div>
+    
                 }
-            </div>
-
-        </div>
+                </div>
+        )
     )
 }
 

@@ -1,228 +1,423 @@
-.profile-world-card {
-    padding-top: 0 !important;
-    width: fit-content;
-    min-height: 100% !important;
-}
-
-#chartdiv {
-    height: fit-content !important;
-}
-
-.sc-bdVaJa {
-    margin-top: 0 !important;
-    min-width: 275px;
-}
-
-.user-details {
-    text-align: left;
-    padding-left: 5px;
-    margin-bottom: 20px;
-}
-
-.country-flag {
-    max-height: 100px;
-}
-
-.leaderboard-item {
-    width: 100%;
-    font-size: 10px;
-    margin-bottom: 10px;
-    text-align: left;
-}
-.leaderboard-profile-image {
-    border-radius: 50%;
-    height: 30px;
+.profile-container {
+// margin-top: 20px;
     position: relative;
-    top: 5px;
-}
-
-.username {
-    position: relative;
-    top: 5px;
-    left: 35px;
-}
-
-.ranking-score {
-    float: right;
-    margin-top: 10px;
-    margin-right: 8%;
-}
-
-.ranking-score-heading {
-    float: right;
-    margin-top: 5px;
-}
-
-.username-heading {
-    position: relative;
-    top: 5px;
-    left: 65px;
-}
-
-.profile-row-item {
-    margin: 1%;
-    height: 100%;
-    width: fit-content;
-}
-
-.profile-visited-heading {
-    display: relative;
-    top: 0;
-    left: 30%;
-}
-
-.profile-country-card {
-    width: fit-content !important;
-    height: 150px;
-    margin: 5px !important;
-}
-
-.profile-card {
-    height: 270px;
-}
-
-@media only screen and (min-width: 1070px) {
-
-    .profile-container {
-        position: relative;
-        top: 20px;
-        margin-left: 1rem;
+    top: 10px;
+    .profile-top-row {
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: center;
-        color: white;
-        
-    }
+        margin: 20px 0;
+        height: 330px;
+        .profile-row-item {
+            width: 48%;
+            justify-content: center;
+            display: flex;
+            .card-header {
+                width: 100%;
+                text-align: center;
+            }
+            .profile-card {
+                margin: 0;
+            }
     
+            .user-container {
+                width: 70%;
+                height: 100%;
+                .user-info, .user-info-card {
+                    height: 100%;
+                }
+            }
+            .user-details {
+                p {
+                    font-size: 16px;
+                    padding: 5px;
+                }
+            }
+            .leaderboard-container {
+                width: 75%;
+                height: 330px;
+                .leaderboard-card {
+                    height: fit-content;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: nowrap;
+                    justify-content: center;
+                }
+                .leaderboard-wrapper {
+                    display: flex;
+                    flex-direction: row;
+                    width: 100%;
+                    justify-content: center;
+                    .leaderboard {
+                        width: 70%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        padding: 0 5px;
+        
+                        .leaderboard-item {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            width: 100%;
+                            margin: 5px 0;
+                            span {
+                                width: 50%;
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: left;
+                                text-align: left;
+                                img {
+                                    margin-right: 15px;
+                                    transform: translateY(-5px);
+                                }
+                            }
+    
+                            
+                            .username {
+                                width: 100%;
+                                text-align: left;
+                            }
+
+                            .ranking-score {
+                                width: 100%;
+                                justify-content: center;
+                                text-align: center;
+                                transform: translateY(-5px);
+                            }
+        
+                            .leaderboard-profile-image {
+                                height: 30px;
+                                // margin: 10px 0;
+                            }
+                            .username, .ranking-score {
+                                margin: auto;
+                                // display: flex;
+                                // flex-direction: column;
+                                // justify-content: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+        
+    }       
     .profile-row {
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        width: 90%;
-        height: fit-content;
-        box-sizing: border-box;
-        max-height: 50%;
-        color: black;
-    }
+        justify-content: center;
 
-    .age-form-span {
-        display: inline-flex;
-        padding-top: 10px;
-        padding-bottom: 4px;
-        /* vertical-align: middle; */
-    }
-
-    .age-form {
-        max-width: 50px;
-        margin-top: 5px;
-        margin-right: 5px;
-    }
-
-    .profile-row-visited {
-        display: flex;
-        flex-direction: row;
-        width: 90%;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        box-sizing: border-box;
-        height: 100%;
-        color: black;
-    }
-
-    .profile-row-visited::-webkit-scrollbar {
-        /* width: 0; */
-        scrollbar-width: none;
-        height: 0;
-        background: rgba(255, 255, 255)
-    }
-
-    .profile-row-visited-container {
-        height: fit-content;
-        width: 100%;
-        overflow: hidden;
-        position: relative;
-        margin-bottom: 20px;
-        margin-left: 6%;
-    }
-
-    .profile-row-heading {
-        float: left;
-        /* color: white */
-
-    }
-
-    }
-
-    .user-details-card-p {
-        padding-top: 10px;
-    }
-
-
-
-    @media only screen and (max-width: 1070px) {
-        .profile-container {
-            position: relative;
-            top: 20px;
-            margin-left: 1rem;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            height: 100%;
-            color: white;
-
-        }
-
-        .profile-row {
-            display: flex;
-            flex-direction: column-reverse;
-            flex-wrap: wrap;
+        .countries-container {
             width: fit-content;
-            height: fit-content;
-            box-sizing: border-box;
-            max-height: 50%;
-            color: black;
+            .map-card {
+                max-height: 550px;
+                width: 90vw;
+                .profile-map-content {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    .profile-map {
+                        width: 70%;
+                        svg {
+                            // margin-top: -50px;
+                            height: 100%;
+                            width: 75%;
+                        }
+                    }
+    
+                    .profile-map-flags {
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        width: 35%;
+                        height: fit-content;
+                        .profile-map-flag {
+                            background-color: whitesmoke;
+                            width: 120px;
+                            height: 60px;
+                            perspective: 1000px;
+                            margin: 10px;
+                            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                        }
 
+                          
+                          .profile-map-flag-inner {
+                            position: relative;
+                            width: 100%;
+                            height: 100%;
+                            text-align: center;
+                            transition: transform 0.8s;
+                            transform-style: preserve-3d;
+                          }
+                          
+                          .profile-map-flag:hover .profile-map-flag-inner {
+                            transform: rotateY(180deg);
+                          }
+                          
+                          .profile-map-flag-front, .profile-map-flag-back {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            -webkit-backface-visibility: hidden;
+                            backface-visibility: hidden;
+                          }
+                          
+                          .profile-map-flag-front {
+                            background-color: #bbb;
+                            color: black;
+                          }
+                          
+                          .profile-map-flag-back {
+                            background-color:  #e68b24;
+                            color: white;
+                            transform: rotateY(180deg);
+                          }
+                            img {
+                                height: 100%;
+                                width: 100%;
+                            }
+                        }
+                    }
+                    
+                }
+            }
         }
-
-    .profile-country-card {
-        width: fit-content !important;
-        /* height: 150px; */
-        width: 250px !important;
-        margin: 5px !important;
     }
 
-    .profile-row-visited {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        box-sizing: border-box;
-        height: 100%;
-        color: black;
 
-    }
 
-    .profile-row-visited::-webkit-scrollbar {
-        /* width: 0; */
-        width: 0;
-        height: 0;
-        background: rgba(255, 255, 255)
-    }
+
+
+
+// .profile-world-card {
+//     padding-top: 0 !important;
+//     width: fit-content;
+//     min-height: 100% !important;
+// }
+
+// #chartdiv {
+//     height: fit-content !important;
+// }
+
+// .sc-bdVaJa {
+//     margin-top: 0 !important;
+//     min-width: 275px;
+// }
+
+// .user-details {
+//     text-align: left;
+//     padding-left: 5px;
+//     margin-bottom: 20px;
+// }
+
+// .country-flag {
+//     max-height: 100px;
+// }
+
+// .leaderboard-item {
+//     width: 100%;
+//     font-size: 10px;
+//     margin-bottom: 10px;
+//     text-align: left;
+// }
+// .leaderboard-profile-image {
+//     border-radius: 50%;
+//     height: 30px;
+//     position: relative;
+//     top: 5px;
+// }
+
+// .username {
+//     position: relative;
+//     top: 5px;
+//     left: 35px;
+// }
+
+// .ranking-score {
+//     float: right;
+//     margin-top: 10px;
+//     margin-right: 8%;
+// }
+
+// .ranking-score-heading {
+//     float: right;
+//     margin-top: 5px;
+// }
+
+// .username-heading {
+//     position: relative;
+//     top: 5px;
+//     left: 65px;
+// }
+
+// .profile-row-item {
+//     margin: 1%;
+//     height: 100%;
+//     width: fit-content;
+// }
+
+// .profile-visited-heading {
+//     display: relative;
+//     top: 0;
+//     left: 30%;
+// }
+
+// .profile-country-card {
+//     width: fit-content !important;
+//     height: 150px;
+//     margin: 5px !important;
+// }
+
+// .profile-card {
+//     height: 270px;
+// }
+
+// @media only screen and (min-width: 1070px) {
+
+//     .profile-container {
+//         position: relative;
+//         top: 40px;
+//         margin-left: 1rem;
+//         display: flex;
+//         flex-direction: row;
+//         flex-wrap: wrap;
+//         justify-content: center;
+//         color: white;
+        
+//     }
+    
+//     .profile-row {
+//         display: flex;
+//         flex-direction: row;
+//         flex-wrap: wrap;
+//         justify-content: space-around;
+//         width: 90%;
+//         height: fit-content;
+//         box-sizing: border-box;
+//         max-height: 50%;
+//         color: black;
+//     }
+
+//     .age-form-span {
+//         display: inline-flex;
+//         padding-top: 10px;
+//         padding-bottom: 4px;
+//         /* vertical-align: middle; */
+//     }
+
+//     .age-form {
+//         max-width: 50px;
+//         margin-top: 5px;
+//         margin-right: 5px;
+//     }
+
+//     .profile-row-visited {
+//         display: flex;
+//         flex-direction: row;
+//         width: 90%;
+//         overflow-x: scroll;
+//         overflow-y: hidden;
+//         box-sizing: border-box;
+//         height: 100%;
+//         color: black;
+//     }
+
+//     .profile-row-visited::-webkit-scrollbar {
+//         /* width: 0; */
+//         scrollbar-width: none;
+//         height: 0;
+//         background: rgb(255, 255, 255)
+//     }
+
+//     .profile-row-visited-container {
+//         height: fit-content;
+//         width: 100%;
+//         overflow: hidden;
+//         position: relative;
+//         margin-bottom: 20px;
+//         margin-left: 6%;
+//     }
+
+//     .profile-row-heading {
+//         float: left;
+//         /* color: white */
+
+//     }
+
+//     }
+
+//     .user-details-card-p {
+//         padding-top: 10px;
+//     }
+
+
+
+//     @media only screen and (max-width: 1070px) {
+//         .profile-container {
+//             position: relative;
+//             top: 20px;
+//             margin-left: 1rem;
+//             display: flex;
+//             flex-direction: row;
+//             flex-wrap: wrap;
+//             justify-content: space-between;
+//             height: 100%;
+//             color: white;
+
+//         }
+
+//         .profile-row {
+//             display: flex;
+//             flex-direction: column-reverse;
+//             flex-wrap: wrap;
+//             width: fit-content;
+//             height: fit-content;
+//             box-sizing: border-box;
+//             max-height: 50%;
+//             color: black;
+
+//         }
+
+//     .profile-country-card {
+//         width: fit-content !important;
+//         /* height: 150px; */
+//         width: 250px !important;
+//         margin: 5px !important;
+//     }
+
+//     .profile-row-visited {
+//         display: flex;
+//         flex-direction: column;
+//         width: 100%;
+//         overflow-x: hidden;
+//         overflow-y: scroll;
+//         box-sizing: border-box;
+//         height: 100%;
+//         color: black;
+
+//     }
+
+//     .profile-row-visited::-webkit-scrollbar {
+//         /* width: 0; */
+//         width: 0;
+//         height: 0;
+//         background: rgb(255, 255, 255)
+//     }
 
   
 
-    .profile-row-visited-container {
-        height: fit-content;
-        width: fit-content;
-        overflow: hidden;
-        position: relative;
-        margin-bottom: 20px;
-        margin-left: 1%;
-    }
+//     .profile-row-visited-container {
+//         height: fit-content;
+//         width: fit-content;
+//         overflow: hidden;
+//         position: relative;
+//         margin-bottom: 20px;
+//         margin-left: 1%;
+//     }
 
-        }
+// }
 

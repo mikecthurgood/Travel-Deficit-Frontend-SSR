@@ -13,7 +13,7 @@ import PrivacyPolicy from './Components/Profile/PrivacyPolicy'
 
 const App = ({page}) => {
 
-  const [user, setUser] = useState({ id: 0, username: 'Mikey T', age: '36'})
+  const [user, setUser] = useState({ id: 0, username: 'Mikey T', age: ''})
   const [visitedCountries, setVisitedCountries] = useState({codes: [], names: []})
   const [countries, setCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = useState('')
@@ -105,7 +105,7 @@ const App = ({page}) => {
   }
 
   const closeSideBar = () => {
-    setSelectedCountry("")
+    // setSelectedCountry("")
     setSidebarVisible(false)
     setActiveIndex(0)
   }
@@ -199,6 +199,7 @@ const App = ({page}) => {
                 handleHover={handleHover}
                 addToWishList={addToWishList}
                 wishlist={wishlist}
+                page={page}
               />}
             {/* <Route path="/login" render={(routerProps) =>
               <Login
@@ -226,7 +227,7 @@ const App = ({page}) => {
                 addToWishList={addToWishList}
                 wishlist={wishlist}
                 filter={addCountryFilter}
-
+                page={page}
               />}
             
             {page === 'profile' &&
@@ -239,15 +240,18 @@ const App = ({page}) => {
                 userAge={user.age}
                 // updateAge={updateAge}
                 wishlist={wishlist}
+                page={page}
               />}
 
             {page === 'recommendations' &&
               <Recommendations
                 countries={countries}
                 wishlist={wishlist}
+                page={page}
               />}
             {page === 'privacyPolicy' &&
               <PrivacyPolicy
+              page={page}
               />}
 
           </div>

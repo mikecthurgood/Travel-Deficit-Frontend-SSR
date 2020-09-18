@@ -10,7 +10,7 @@ import ScrollContainer from 'react-indiana-drag-scroll'
 
 
 
-const Profile = ({ countries, visitedCountries, userName, userAge, badges, userImage, bannerNumber, updateAge, updateGuestAge, wishlist }) => {
+const Profile = ({ countries, visitedCountries, userName, userAge, badges, userImage, bannerNumber, updateAge, updateGuestAge, wishlist, page }) => {
 
     const filteredCountries = countries.length > 0 && countries.filter(country => visitedCountries.includes(country.code)).sort((a, b) => a.name.localeCompare(b.name))
     // const continents = filteredCountries.length > 0 && [...new Set(filteredCountries.map(country => country.continent))].sort()
@@ -18,7 +18,7 @@ const Profile = ({ countries, visitedCountries, userName, userAge, badges, userI
     return (
 
         <div className='profile-container'>
-            <div className='profile-row'>
+            <div className='profile-top-row'>
                 <div className='profile-row-item'>
                     <UserInfo
                         countries={countries}
@@ -29,30 +29,27 @@ const Profile = ({ countries, visitedCountries, userName, userAge, badges, userI
                         userImage={userImage}
                         updateAge={updateAge}
                         updateGuestAge={updateGuestAge}
-                    />
+                        />
                 </div>
                 <div className='profile-row-item'>
-
-                    <ProfileMap
-                        countries={countries}
-                        visitedCountries={visitedCountries}
-                    />
-                </div>
-
-                <div className='profile-row-item'>
-
                     <LeaderBoard
-                        countries={countries}
-                        visitedCountries={visitedCountries}
-                        userName={userName}
-                        userAge={userAge}
-                        // badges={badges}
-                        userImage={userImage}
+                    countries={countries}
+                    visitedCountries={visitedCountries}
+                    userName={userName}
+                    userAge={userAge}
+                    // badges={badges}
+                    userImage={userImage}
                     />
                 </div>
             </div>
-
-            <div className='profile-row-visited-container'>
+            <div className='profile-row'>
+                <ProfileMap
+                    countries={countries}
+                    visitedCountries={visitedCountries}
+                />
+                
+            </div>
+            {/* <div className='profile-row-visited-container'>
                 <ScrollContainer className="scroll-container" horizontal={true} vertical={false}>
                     <ProfileVisited
                         countries={countries}
@@ -69,7 +66,7 @@ const Profile = ({ countries, visitedCountries, userName, userAge, badges, userI
                 />
             </div>
 
-
+ */}
 
         </div >
 

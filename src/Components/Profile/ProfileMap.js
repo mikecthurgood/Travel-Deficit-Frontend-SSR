@@ -4,20 +4,38 @@ import { Card } from 'semantic-ui-react'
 
 const ProfileMap = ({ countries, visitedCountries }) => {
 
-    const filteredCountries = countries.length > 0 && countries.filter(country => visitedCountries.includes(country.code)).sort((a, b) => a.name.localeCompare(b.name))
+    const filteredCountries = countries.filter(country => visitedCountries.includes(country.code)).sort((a, b) => a.name.localeCompare(b.name)) || []
     const continents = filteredCountries.length > 0 && [...new Set(filteredCountries.map(country => country.continent))].sort()
 
     return (
         <div className='countries-container'>
-            <Card className='profile-card'>
-                <Card.Header>
-                    Your World Map
-                     </Card.Header>
-                <Card.Content>
+            <Card className='profile-card map-card'>
+                <div className='card-header'>
+                    <h3>Your World Map</h3>
+                </div>
+                <div className='profile-map-content'>
+                    <div className='profile-map'>
                     <WorldMapView
                         visitedCountries={visitedCountries}
                     />
-                </Card.Content>
+                    </div>
+                    <div className='profile-map-flags'>
+                        {filteredCountries.map(cnt => (
+                            <>
+                                <div class="profile-map-flag">
+                                    <div class="profile-map-flag-inner">
+                                        <div class="profile-map-flag-front">
+                                        <img src={`/world-flags/${cnt.code}.png`} alt={cnt.name}/>
+                                        </div>
+                                        <div class="profile-map-flag-back">
+                                        <h4>{cnt.name}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+                        ))}
+                    </div>
+                </div>
             </Card>
         </div >
     )

@@ -5,7 +5,7 @@ import RecommendationTrips from './RecommendationTrips'
 // import API from '../Helpers/API'
 
 
-const configObj = (type, body = null) => {
+const configObj = (type, page, body = null) => {
     return {
         method: type,
         headers: {
