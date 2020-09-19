@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { required, length, email, match } from '../../util/validators';
+import { required, length, email } from '../../Util/Validators';
 // import { Redirect } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
