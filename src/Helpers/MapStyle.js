@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+
 const Map = styled.div`
   margin: 1rem auto;
   width: 100%;
@@ -9,12 +10,12 @@ const Map = styled.div`
     stroke: #fff;
 
     path {
-      fill: #4953da;
+      fill: #475E7F;
       cursor: pointer;
       outline: none;
 
       &:hover {
-        fill:  #5d65d6;
+        fill:  #5B6C7C;
       }
 
       &:focus {
@@ -23,6 +24,9 @@ const Map = styled.div`
 
       &[aria-checked='true'] {
         fill: #e68b24;
+        &:hover {
+          fill:  #E59854;
+        }
       }
 
       &[aria-current='true'] {

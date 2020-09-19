@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
+import Link from 'next/link';
 
-const LoginMenu = ({visible}) => {
+const LoginMenu = ({loginMenuToggle, visible, setSignupVisibility}) => {
     
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -14,6 +15,12 @@ const LoginMenu = ({visible}) => {
         console.log('Username:', username, 'password:', password)
     }
 
+    const handleSignupLinkClick = () => {
+        setSignupVisibility(true)
+        loginMenuToggle()
+    }
+    
+
 
     return (
     <div className={`login__menu ${visible ? 'visible' : ''}`}>
@@ -22,6 +29,8 @@ const LoginMenu = ({visible}) => {
             <input type="password" name='password' placeholder='Password' onChange={handleFieldChange}/>
             <button onClick={loginHandler}>Login</button>
         </form>
+        <p>No account?</p>
+        <p className='signup-link' onClick={handleSignupLinkClick}>Signup</p>
     </div>
     )
 }

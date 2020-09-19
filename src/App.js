@@ -6,6 +6,7 @@ import API from './Helpers/API';
 import AddCountry from './Components/MapPage/AddCountry'
 import SecondaryNav from './Components/Navigation/SecondaryNav'
 import Profile from './Components/Profile/Profile'
+import Signup from './Components/Auth/Signup'
 // import Footer from './Components/Navigation/Footer'
 import Recommendations from './Components/Recommendations/Recommendations'
 import PrivacyPolicy from './Components/Profile/PrivacyPolicy'
@@ -23,8 +24,9 @@ const App = ({page}) => {
   const [countryNamePopUp, setCountryNamePopUp] = useState(false)
   const [wishlist, setWishlist] = useState([])
   const [loginMenuVisible, setLoginMenuVisibility] = useState(false)
-  const [addCountryFilter, setAddCountryFilter] = useState('All') //STILL TO DO
-  const [activeIndex, setActiveIndex] = useState(0) //STILL TO DO
+  const [countryFilter, setCountryFilter] = useState('All')
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [signupVisible, setSignupVisibility] = useState(false)
 
   useEffect(() => {
     API.newCountryInfo()
@@ -152,12 +154,6 @@ const App = ({page}) => {
   //   this.props.history.goBack()
   // }
 
-  // setFilter = (filter) => {
-  //   this.setState({
-  //     addCountryFilter: filter
-  //   })
-  // }
-
   // updateAge = (age) => {
   //   if (this.state.username === 'Guest') {
   //     this.setState({ userAge: age })
@@ -169,6 +165,10 @@ const App = ({page}) => {
   //   }
   // }
 
+  const handleCountryFilter = (value) => {
+    setCountryFilter(value)
+  }
+
   return (
     <>
       <div className='site'>
@@ -177,6 +177,7 @@ const App = ({page}) => {
             username={user.name}
             loginMenuToggle={loginMenuToggle}
             loginMenuVisible={loginMenuVisible}
+            setSignupVisibility={setSignupVisibility}
           />
           <SecondaryNav />
           <div className='site-body'>
@@ -201,15 +202,6 @@ const App = ({page}) => {
                 wishlist={wishlist}
                 page={page}
               />}
-            {/* <Route path="/login" render={(routerProps) =>
-              <Login
-                {...routerProps}
-                guestLogin={guestLogin}
-                user={user.id}
-                authenticate={authenticate}
-                setUser={setUser}
-              />
-            } /> */}
             {page === 'listView' &&
               <AddCountry
                 user={user.id}
@@ -223,10 +215,10 @@ const App = ({page}) => {
                 addOrRemoveCountry={addOrRemoveCountryButtonClick}
                 activeIndex={activeIndex}
                 handleSideBarAccordionClick={handleSideBarAccordionClick}
-                // setFilter={setFilter}
+                filter={countryFilter}
+                setFilter={handleCountryFilter}
                 addToWishList={addToWishList}
                 wishlist={wishlist}
-                filter={addCountryFilter}
                 page={page}
               />}
             
@@ -253,6 +245,12 @@ const App = ({page}) => {
               <PrivacyPolicy
               page={page}
               />}
+
+              <Signup
+                page={page}
+                visible={signupVisible}
+                setSignupVisibility={setSignupVisibility}
+              />
 
           </div>
         </div>

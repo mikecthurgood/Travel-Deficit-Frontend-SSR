@@ -7,7 +7,7 @@ import SidePanel from './SidePanel'
 const CountryCard = ({ country, closeSideBar, addOrRemoveCountry, visitedCountries, sidebarVisible, selectedCountry, addToWishList, wishlist, page }) => {
 
     return (
-        (page === 'home' || page === 'list-view') && (
+        (
             
             <div className={`stats-sidebar ${selectedCountry && sidebarVisible ? 'visible' : ''}`}>
                 <div>

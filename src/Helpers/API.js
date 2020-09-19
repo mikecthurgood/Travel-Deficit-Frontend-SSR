@@ -1,9 +1,4 @@
-const baseUrl = 'https://travel-deficit-api.herokuapp.com/'
-const usersUrl = baseUrl + 'users/'
-const addCountryToUserURL = baseUrl + 'add-user-country'
-const addCountryToWishListURL = baseUrl + 'add-to-wishlist'
-const addImageToCountryURL = baseUrl + 'countries/'
-const graphqlUrl = 'http://localhost:8080/graphql'
+const graphqlUrl = 'https://travel-deficit-node-api.herokuapp.com/graphql'
 
 
 class API {
