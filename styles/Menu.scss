@@ -21,16 +21,78 @@ $darkBlue: #475E7F;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    .nav-link {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: left;
-        margin: 0;
-        padding: 10px;
-        cursor: pointer;
-        &:hover {
-            color: $orange; 
+    .menu__panel-item {
+        margin: 10px 0 ;
+        span {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+            margin: 0;
+            padding: 10px 10px 5px 10px;
+            cursor: pointer;
+            &:hover {
+                color: $orange;
+                background-color: rgb(238, 236, 236);
+            }
+            h4, h2 {
+                margin: 0;
+            }
+            h2 {
+                transform: translateY(-6px);
+                transition: transform 0.3s ease-in;
+
+                &.active {
+                    transform: rotate(90deg) translateX(-6px);
+                    transition: transform 0.3s ease-in;
+                }
+            }
+        }
+        .menu__panel-item-sub__menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in;
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+
+            &.visible {
+                height: fit-content;
+                max-height: 100px;
+                transition: max-height 0.3s ease-in;
+            }
+            span {
+                text-align: left;
+                margin: 0;
+                width: 100%;
+                padding: 10px 0 10px 20px;
+                p {
+                    margin: 0;
+                }
+            }
+            .add-friend-form {
+                display: flex;
+                justify-content: left;
+                padding: 0 50px 0 10px;
+                input {
+                    padding: 10px;
+                    font-family: 'Muli', sans-serif;
+                    width: 100%
+                }
+            }
+            .friend-request-confirmation {
+                color: green;
+                text-align: left;
+                padding: 0 0 0 10px;
+                margin: 0;
+                opacity: 0;
+                transition: opacity 0.3s ease-in;
+                &.visible {
+                    opacity: 1;
+                    height: fit-content;
+                    transition: opacity 0.3s ease-in;
+                }
+            }
         }
     }
 }

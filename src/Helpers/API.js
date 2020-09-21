@@ -32,7 +32,7 @@ const post = (graphqlQuery, token) =>(
     //         body: JSON.stringify(data)
     //     }).then(resp => resp.json())
 
-const newCountryInfo = () => {
+const newCountryInfo = (token) => {
         const query = {query: `
             {
                 countries {
@@ -47,11 +47,12 @@ const newCountryInfo = () => {
                         code
                         imageUrl
                     }
+                    loggedIn
                 }
             }
         `}
 
-        return get(query)
+        return post(query, token)
     }
 
     const signup = async (userInfo) => {

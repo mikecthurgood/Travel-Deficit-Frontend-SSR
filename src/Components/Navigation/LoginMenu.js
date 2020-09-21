@@ -15,8 +15,8 @@ const LoginMenu = ({loginMenuToggle, setUser, user, visible, setSignupVisibility
         e.preventDefault()
         const loginResult = await API.login({username, password})
         if (loginResult.isAuth) {
-            const {userId, username, age} = loginResult
-            setUser({userId, username, age})
+            const {userId, username, age, token, isAuth} = loginResult
+            setUser({userId, username, age, token, isAuth})
             loginMenuToggle()
         }
         console.log('loginResult',loginResult)

@@ -31,16 +31,28 @@ $darkBlue: #475E7F;
         left: calc(50vw - (350px / 2));
         cursor: pointer;
       }
-    .profile-picture {
-        position: absolute;
+    .login-icon {
+      position: absolute;
+      top: 15px;
+      right: 2.5%;
+      display: flex;
+      flex-direction: row;
+      p {
+        color: white;
+        width: fit-content;
+        position: relative;
+        margin: 0 10px;
+        top: 5px;
+      }
+
+      .profile-picture {
         border-radius: 50%;
-        top: 15px;
-        right: 2.5%;
         height: 50%;
         z-index: 10001;
         height: 30px;
         cursor: pointer;
       }
+    }
 
     }
         .secondary-nav{
@@ -80,7 +92,7 @@ $darkBlue: #475E7F;
   width: 200px;
   position: absolute;
   height: fit-content;
-  top: -120px;
+  top: -180px;
   right: 0;
   background-color: #282c34;
   opacity: 0.95;

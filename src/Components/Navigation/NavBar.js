@@ -23,6 +23,7 @@ const NavBar = ({loginMenuToggle, loginMenuVisible, setSignupVisibility, menuTog
                 </Link>
             </span>
             <span className='login-icon'>
+                {user.isAuth && <p>Hi {user.username}</p>}
                 <img src='/login-icon.jpg' 
                 onMouseOver={e => (e.currentTarget.src = '/login-icon-hover.jpg')} 
                 onMouseOut={e => (e.currentTarget.src = '/login-icon.jpg')}

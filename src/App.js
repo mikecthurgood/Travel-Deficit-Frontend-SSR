@@ -31,24 +31,33 @@ const App = ({page}) => {
   const [menuVisible, setMenuVisibility] = useState(false)
 
   useEffect(() => {
-    API.newCountryInfo()
+    const token = localStorage.getItem('token')
+    const userId = localStorage.getItem('userId')
+    const username = localStorage.getItem('userName')
+    const age = localStorage.getItem('userAge')
+    if (!token) setUser({ id: '', username: 'Guest', age: '', token: '', isAuth: false})
+    API.newCountryInfo(token)
       .then(data => {
         setCountries(data.data.countries.countries)
+        const authorised = data.data.countries.loggedIn
+        if (authorised) setUser({username, userId, token, age: Number(age), isAuth: true})
       })
     const countryCodes = localStorage.getItem('countries')
     const countryNames = localStorage.getItem('countryNames')
     if (countryCodes) {
       setVisitedCountries({codes: countryCodes.split(','), names: countryNames.split(',')})
     }
-    const token = localStorage.getItem('token')
-    const userId = localStorage.getItem('userId')
-    const username = localStorage.getItem('userName')
-    const age = localStorage.getItem('userAge') 
-    if (!token) {
-      return;
+    const wishlistIds = localStorage.getItem('wishList')
+    if (wishlistIds) {
+      setWishlist(wishlistIds.split(','))
     }
-    setUser({username, userId, token, age: Number(age), isAuth: true})
+    
   }, [])
+
+  const authenticateUser = async (token) => {
+    const result = await API.authenticateUser(token)
+    return result
+  }
   
   const handleHover = (e) => {
     if (e.target && e.target.attributes && e.target.attributes.name && e.target.attributes.name.value) {
@@ -114,11 +123,18 @@ const App = ({page}) => {
 
   const addToWishList = (countryId) => {
     if (!wishlist.includes(countryId)) {
-      setWishlist([...wishlist, countryId])
+      if (wishlist.length > 0) {
+        setWishlist([...wishlist, countryId])
+        localStorage.setItem('wishList', [...wishlist, countryId])
+      } else {
+        setWishlist([countryId])
+        localStorage.setItem('wishList', countryId)
+      }
       // API.addCountryToWishList(this.state.userID, countryId)
     } else {
       const filteredCountries = wishlist.filter(cntry => cntry !== countryId)
       setWishlist(filteredCountries)
+      localStorage.setItem('wishList', filteredCountries)
       // API.addCountryToWishList(this.state.userID, countryId)
     }
   }
@@ -172,10 +188,12 @@ const App = ({page}) => {
   // }
 
   const updateAge = (age) => {
-    // if (user.username === 'Guest') {
+    if (user.username === 'Guest') {
       const updatedUser = {...user}
       updatedUser.age = age
-      setUser(updatedUser)
+      return setUser(updatedUser)
+    }
+    return
     // } else {
     //   API.updateAge(this.state.userID, age)
     //     .then(resp => resp.json)
