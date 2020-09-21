@@ -15,8 +15,7 @@ const UserInfo = (props) => {
 
     const handleAgeChange = (e) => {
         e.preventDefault()
-        // props.updateAge(e.target['ageInput'].value)
-        console.log(e.target['ageInput'].value)
+        props.updateAge(e.target['ageInput'].value)
         setAgeFormVisibility(!ageFormVisible)
     }
 
@@ -30,7 +29,7 @@ const UserInfo = (props) => {
                         <p><strong>Username</strong>: {userName}</p>
                         <>
                             <p><strong>Age</strong>: 
-                                <span className='age-form-span'>{`${userAge} `}
+                                <span className='age-form-span'>{` ${userAge}`}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     {ageFormVisible &&
                                         <form onSubmit={handleAgeChange} >
                                             <input className='age-form' size="4" type="number" name='ageInput' />

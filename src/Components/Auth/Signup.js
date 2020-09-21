@@ -1,60 +1,12 @@
 import React, { useState } from 'react'
 import { required, length, email } from '../../Util/Validators';
+import API from '../../Helpers/API'
 // import { Redirect } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 
 
 const Signup = ({visible, setSignupVisibility}) => {
-
-    // const [userName, setUsername] = useState({
-    //     value: '',
-    //     confirmation: '',
-    //     valid: false,
-    //     // touched: false,
-    //     validators: [required]
-    // })
-
-    // const [userEmail, setUserEmail] = useState({
-    //     value: '',
-    //     valid: false,
-    //     // touched: false,
-    //     validators: [required, email]
-    // })
-    
-    // const  [password, setPassword] = useState({
-    //     value: '',
-    //     valid: false,
-    //     // touched: false,
-    //     validators: [required, length({ min: 5 })]
-    // })
-
-    // const  [passwordConfirmation, setPasswordConfirmation] = useState({
-    //     value: '',
-    //     valid: false,
-    //     // touched: false,
-    //     validators: [required, length({ min: 5 })]
-    // })
-
-    // const [dob, setDob] = useState({
-    //     value: '',
-    //     valid: false,
-    //     // touched: false,
-    //     validators: [required]
-    // })
-
-    // state = {
-    //     signupForm: {
-    //       email: {
-    //         value: '',
-    //         valid: false,
-    //         touched: false,
-    //         validators: [required, email]
-    //       },
-    //       formIsValid: false
-    //     },
-    //     errorMessage: [],
-    //   };
 
     const [signupForm, setSignupForm] = useState({
         username: {
@@ -92,7 +44,7 @@ const Signup = ({visible, setSignupVisibility}) => {
     })
     
     
-    const [errorMessages, setErrorMessages] = useState([])
+    const [signupErrors, setSignupErrors] = useState([])
 
     const inputChangeHandler = (input) => {
         const {name, value} = input.target
@@ -100,8 +52,7 @@ const Signup = ({visible, setSignupVisibility}) => {
         let isValid = true;
         let formIsValid = false;
         
-        console.log(name, value, signupForm.formIsValid)
-        if (name === 'dob') console.log(new Date(value).getFullYear())
+        // if (name === 'dob') console.log(new Date(value).getFullYear())
         for (const validator of signupForm[name].validators) {
             isValid = isValid && validator(value);
         }
@@ -138,37 +89,38 @@ const Signup = ({visible, setSignupVisibility}) => {
 
       const submitHandler = async e => {
         e.preventDefault()
-        console.log(signupForm)
-    //     const submitData = !this.props.signup ? 
-    //         {
-    //             email: this.state.signupForm.email.value,
-    //             password: this.state.signupForm.password.value
-    //         }
-    //         :
-    //         {
-    //             username: this.state.signupForm.username.value, 
-    //             email: this.state.signupForm.email.value,
-    //             password: this.state.signupForm.password.value,
-    //             passwordConfirmation: this.state.signupForm.passwordConfirmation.value,
-    //         }
-    //     const response = await this.props.onSubmit(e, {
-    //         submitData
-    //     })
-    //     if (response && response.error) {
-    //       return this.setState({errorMessage: response.error})
-    //     }
-    //   }
+        const submitData = {
+            username: signupForm.username.value,
+            dob: signupForm.dob.value,
+            email: signupForm.email.value,
+            password: signupForm.password.value,
+            passwordConfirmation: signupForm.passwordConfirmation.value,
+        }
+        const response = await API.signup({
+            submitData
+        })
+
+        console.log('response', response)
+        if (response && response.error) {
+            const mappedErrors = response.error.map(error => {
+                return {code: error.code, message: error.message}
+            })
+          return setSignupErrors(mappedErrors)
+        }
+      }
 
     //   closeMobileMenu = () => {
     //     this.props.loginToggle()
-      }
+    //   }
       
     //   render() {
     //       const { loginError, signup, user, hideRegisterButton } = this.props
     //       if (user && user.userId) {
     //         return <Redirect to={"/"} />
     //       }
-          return (
+
+        const errorCodes = signupErrors.length > 0 ? signupErrors.map(error => error.code) : []
+        return (
             <>
               <div className={`signup__form-container ${visible ? 'visible' : ''}`}>
                 <div className='signup__form'>
@@ -199,6 +151,7 @@ const Signup = ({visible, setSignupVisibility}) => {
                                 // onBlur={inputBlurHandler.bind(this, 'username')}
                                 // touched={signupForm['username'].touched}
                             />
+                        <p className='signup__form-error'>{errorCodes.includes(423) && 'Username taken'}</p>
                         </div>
                         <div className='signup__form-field'>
                             <label>DATE OF BIRTH (to calculate your travel deficit) </label>
@@ -214,6 +167,7 @@ const Signup = ({visible, setSignupVisibility}) => {
                                 // onBlur={inputBlurHandler.bind(this, 'username')}
                                 // touched={signupForm['username'].touched}
                             />
+                        <p className='signup__form-error'></p>
                         </div>
                         <div className='signup__form-field'>
                             <label>EMAIL</label>
@@ -230,6 +184,7 @@ const Signup = ({visible, setSignupVisibility}) => {
                                 // onBlur={inputBlurHandler.bind(this, 'email')}
                                 // touched={signup ? signupForm['email'].touched : null}
                             />
+                            <p className='signup__form-error'>{errorCodes.includes(422) && 'Email address already in use'}</p>
                         </div>
                         <div className='signup__form-field'>
                             <label>PASSWORD</label>
@@ -247,8 +202,9 @@ const Signup = ({visible, setSignupVisibility}) => {
                                 // touched={signup ? signupForm['password'].touched : null}
                             />
                         </div>
+
                         <div className='signup__form-field'>
-                            <label>CONFIRM YOUR PASSWORD</label>
+                            <label>CONFIRM PASSWORD</label>
                             <input
                                 id="passwordConfirmation"
                                 name="passwordConfirmation"
@@ -262,9 +218,12 @@ const Signup = ({visible, setSignupVisibility}) => {
                                 // onBlur={inputBlurHandler.bind(this, 'passwordConfirmation')}
                                 // touched={signupForm['passwordConfirmation'].touched}
                             />
+                            <p className='signup__form-error'>{errorCodes.includes(425) && 'Password too short (8 characters minimum)'}</p>
+                            <p className='signup__form-error'>{errorCodes.includes(425) && 'Passwords do not match'}</p>
                         </div>
                         <div className='submit-button'>
-                          <button disabled={!signupForm.formIsValid} className={`login_logout ${(signupForm['password'].value.length < 1 || signupForm.email.value.length < 1) ? 'disabled' : 'active'}`}>Signup</button>
+                          {/* <button disabled={!signupForm.formIsValid} className={`login_logout ${(signupForm['password'].value.length < 1 || signupForm.email.value.length < 1) ? 'disabled' : 'active'}`}>Signup</button> */}
+                          <button className='login_logout' >Signup</button>
                         </div>
                     </form>
                     </div>

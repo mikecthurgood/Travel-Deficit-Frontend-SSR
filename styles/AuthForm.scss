@@ -57,7 +57,7 @@ $darkBlue: #475E7F;
                 flex-direction: column;
                 flex-wrap: nowrap;
                 text-align: left;
-                margin: 20px 0;
+                margin: 5px 0;
                 label {
                     margin: auto;
                     margin-left: 0;
@@ -65,7 +65,13 @@ $darkBlue: #475E7F;
                 }
                 input {
                     width: 100%;
-                    padding: 5px;
+                    padding: 10px;
+                }
+                .signup__form-error {
+                    color: $orange;
+                    text-align: left;
+                    margin: 0;
+                    height: 20px;
                 }
             }
             button {

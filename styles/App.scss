@@ -26,34 +26,63 @@ html {
   visibility: hidden;
 }
 
-path {
-  fill: $darkBlue;
-  cursor: pointer;
-  outline: none;
-  &:hover {
-    fill:  #5d65d6;
-  }
+// path {
+//   fill: $darkBlue;
+//   cursor: pointer;
+//   outline: none;
+//   &:hover {
+//     fill:  #5d65d6;
+//   }
 
-  &:focus {
-    fill: rgba(168,43,43,0.6);
-  }
+//   &:focus {
+//     fill: rgba(168,43,43,0.6);
+//   }
 
-  &[aria-checked='true'] {
-    fill: $orange;
-  }
+//   &[aria-checked='true'] {
+//     fill: $orange;
+//   }
 
-  &[aria-current='true'] {
-    fill: rgba(56,43,168,0.83);
-  }
+//   &[aria-current='true'] {
+//     fill: rgba(56,43,168,0.83);
+//   }
 
-  &[id="nz-can"] {
-    fill: rgba(56,43,168,0.6);
-  }
-}
+//   &[id="nz-can"] {
+//     fill: rgba(56,43,168,0.6);
+//   }
+
+// }
+    path {
+        fill: #475E7F;
+        cursor: pointer;
+        outline: none;
+  
+        &:hover {
+          fill:  #5B6C7C;
+        }
+  
+        &:focus {
+          fill: rgba(168,43,43,0.6);
+        }
+  
+        &[aria-checked='true'] {
+          fill: #e68b24;
+          &:hover {
+            fill:  #E59854;
+          }
+        }
+  
+        &[aria-current='true'] {
+          fill: rgba(56,43,168,0.83);
+        }
+  
+        &[id="nz-can"] {
+          fill: rgba(56,43,168,0.6);
+        }
+      }
 
 .site-body {
-  margin-top: 120px;
-  max-height: calc(100vh - 120px);
+  margin-top: 66px;
+  max-height: calc(100vh - 66px);
 }
 
 .footer {
@@ -83,8 +112,8 @@ path {
   transition: 1.0s;
   z-index: 50;
   position: relative;
-  top: -25px;
-  overflow-y: scroll;
+  // top: -25px;
+  // overflow-y: scroll;
 
   #chartdiv {
     height: fit-content !important;
@@ -106,6 +135,7 @@ svg {
 
 .App {
   min-width: 100%;
+  height: 100vh;
 }
 
 .show-map-popup-country-name {

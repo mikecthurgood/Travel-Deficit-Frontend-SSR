@@ -7,6 +7,7 @@ import AddCountry from './Components/MapPage/AddCountry'
 import SecondaryNav from './Components/Navigation/SecondaryNav'
 import Profile from './Components/Profile/Profile'
 import Signup from './Components/Auth/Signup'
+import SideMenu from './Components/Navigation/SideMenu'
 // import Footer from './Components/Navigation/Footer'
 import Recommendations from './Components/Recommendations/Recommendations'
 import PrivacyPolicy from './Components/Profile/PrivacyPolicy'
@@ -14,7 +15,7 @@ import PrivacyPolicy from './Components/Profile/PrivacyPolicy'
 
 const App = ({page}) => {
 
-  const [user, setUser] = useState({ id: 0, username: 'Mikey T', age: ''})
+  const [user, setUser] = useState({ id: '', username: 'Guest', age: '', token: '', isAuth: false})
   const [visitedCountries, setVisitedCountries] = useState({codes: [], names: []})
   const [countries, setCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = useState('')
@@ -27,6 +28,7 @@ const App = ({page}) => {
   const [countryFilter, setCountryFilter] = useState('All')
   const [activeIndex, setActiveIndex] = useState(0)
   const [signupVisible, setSignupVisibility] = useState(false)
+  const [menuVisible, setMenuVisibility] = useState(false)
 
   useEffect(() => {
     API.newCountryInfo()
@@ -38,6 +40,14 @@ const App = ({page}) => {
     if (countryCodes) {
       setVisitedCountries({codes: countryCodes.split(','), names: countryNames.split(',')})
     }
+    const token = localStorage.getItem('token')
+    const userId = localStorage.getItem('userId')
+    const username = localStorage.getItem('userName')
+    const age = localStorage.getItem('userAge') 
+    if (!token) {
+      return;
+    }
+    setUser({username, userId, token, age: Number(age), isAuth: true})
   }, [])
   
   const handleHover = (e) => {
@@ -59,6 +69,13 @@ const App = ({page}) => {
       setSelectedCountry(country)
       setSidebarVisible(true)
     } 
+  }
+
+  const menuToggle = () => {
+    setMenuVisibility(!menuVisible)
+    setSidebarVisible(false)
+    setLoginMenuVisibility(false)
+
   }
 
   const loginMenuToggle = () => {
@@ -154,16 +171,18 @@ const App = ({page}) => {
   //   this.props.history.goBack()
   // }
 
-  // updateAge = (age) => {
-  //   if (this.state.username === 'Guest') {
-  //     this.setState({ userAge: age })
-  //   } else {
-  //     API.updateAge(this.state.userID, age)
-  //       .then(resp => resp.json)
-  //       .then(console.log)
-  //       .then(() => this.setState({ userAge: age }))
-  //   }
-  // }
+  const updateAge = (age) => {
+    // if (user.username === 'Guest') {
+      const updatedUser = {...user}
+      updatedUser.age = age
+      setUser(updatedUser)
+    // } else {
+    //   API.updateAge(this.state.userID, age)
+    //     .then(resp => resp.json)
+    //     .then(console.log)
+    //     .then(() => this.setState({ userAge: age }))
+    // }
+  }
 
   const handleCountryFilter = (value) => {
     setCountryFilter(value)
@@ -177,7 +196,10 @@ const App = ({page}) => {
             username={user.name}
             loginMenuToggle={loginMenuToggle}
             loginMenuVisible={loginMenuVisible}
+            menuToggle={menuToggle}
             setSignupVisibility={setSignupVisibility}
+            setUser={setUser}
+            user={user}
           />
           <SecondaryNav />
           <div className='site-body'>
@@ -230,7 +252,7 @@ const App = ({page}) => {
                 visitedCountriesByName={visitedCountries.names}
                 userName={user.username}
                 userAge={user.age}
-                // updateAge={updateAge}
+                updateAge={updateAge}
                 wishlist={wishlist}
                 page={page}
               />}
@@ -245,6 +267,10 @@ const App = ({page}) => {
               <PrivacyPolicy
               page={page}
               />}
+              <SideMenu 
+                visible={menuVisible}
+                menuToggle={menuToggle}
+              />
 
               <Signup
                 page={page}

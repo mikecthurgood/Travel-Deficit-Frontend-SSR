@@ -7,7 +7,7 @@ import '../styles/NavBar.scss'
 import '../styles/Recommendations.scss'
 import '../styles/Profile.scss'
 import '../styles/AuthForm.scss'
-import "react-datepicker/dist/react-datepicker.css";
+import '../styles/Menu.scss'
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />

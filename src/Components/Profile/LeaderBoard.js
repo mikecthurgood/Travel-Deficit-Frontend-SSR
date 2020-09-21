@@ -13,7 +13,7 @@ const LeaderBoard = ({ userImage, userName, visitedCountries, userAge, countries
                 <div className='card-header'>
                     <h3>Leaderboard</h3>
                 </div>
-                    {userName === 'Guest' ? <h2>Login to view leaderboard</h2> :
+                    {userName === 'Guest' ? <h4>Login to view leaderboard</h4> :
                         <>
                             <div className='leaderboard-wrapper'>
                                 <div className='leaderboard'>

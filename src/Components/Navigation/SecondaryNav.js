@@ -4,7 +4,7 @@ import Link from 'next/link';
 const SecondaryNav = (props) => (
 
     < div className='secondary-nav' >
-        <div className='nav-add-country'>
+        {/* <div className='nav-add-country'>
             <Link
                 className='secondary-nav-link'
                 href="/"
@@ -28,7 +28,7 @@ const SecondaryNav = (props) => (
             activeStyle={{
                 color: 'blue'
             }}
-        ><h4>Profile</h4></Link></div>
+        ><h4>Profile</h4></Link></div> */}
     </div >
 
 )

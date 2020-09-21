@@ -3,17 +3,17 @@ $blue:  #4953da;
 $darkBlue: #475E7F;
 
 .stats-sidebar {
-  height: calc(100vh - 120px);
+  height: calc(100vh - 66px);
   width: 35%;
   min-width: 550px;
   transition: right 0.6s ease-in;
   right: -100vw;
   position: fixed;
-  top: 120px;
+  top: 66px;
   z-index: 20;
   background-color: whitesmoke;
   border: solid 1px gray;
-  opacity: 10.99;
+  opacity: 0.99;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -24,7 +24,7 @@ $darkBlue: #475E7F;
   }
 
   .close-sidebar-button {
-    height: calc(100vh - 120px);
+    height: calc(100vh - 66px);
     width: 20px;
     text-align: center;
     padding: 0;

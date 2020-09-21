@@ -4,7 +4,7 @@ $darkBlue: #475E7F;
 
 .navbar {
     width: 100%;
-    height: 80px;
+    height: 60px;
     /* max-width: 1200px; */
     background-color: #282c34;
     position: fixed;
@@ -13,19 +13,28 @@ $darkBlue: #475E7F;
     z-index: 10000;
     color: white;
     text-align: center;
+
+    .hamburger-menu {
+      position: absolute;
+      left: 30px;
+      top: 21px;
+      height: 20px;
+      cursor: pointer;
+    }
     
     #main-logo {
-        width: 25%;
+        width: 350px;
         max-width: 400px;
         min-width: 100px;
         position: absolute;
-        top: 35%;
-        left: calc(43vw - (/* width */140px / 2));  
+        top: 15px;
+        left: calc(50vw - (350px / 2));
+        cursor: pointer;
       }
     .profile-picture {
         position: absolute;
         border-radius: 50%;
-        bottom: 30%;
+        top: 15px;
         right: 2.5%;
         height: 50%;
         z-index: 10001;
@@ -36,10 +45,10 @@ $darkBlue: #475E7F;
     }
         .secondary-nav{
           // height: 6px;
-          height: 40px;
+          height: 6px;
           background-color: $orange;
           position: fixed;
-          top: 80px;
+          top: 60px;
           left: 0;
           width: 100%;
           display: flex;
@@ -77,6 +86,21 @@ $darkBlue: #475E7F;
   opacity: 0.95;
   transition: top 0.2s ease-in;
   z-index: 1000;
+  .login__menu-loggedin-menu {
+    margin-top: 20px;
+    h4 {
+      color: white;
+      margin: 0;
+    }
+    p{
+      margin: 5px;
+      a {
+        &:hover {
+          color: $orange;
+        }
+      }
+    }
+  }
   .login-form {
     display: flex;
     flex-direction: column;
@@ -121,7 +145,7 @@ $darkBlue: #475E7F;
     }
   }
   &.visible {
-    top: 80px;
+    top: 60px;
     transition: top 0.4s ease-in;
   }
 }

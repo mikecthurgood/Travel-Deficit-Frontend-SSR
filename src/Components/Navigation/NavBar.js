@@ -2,9 +2,18 @@ import React from 'react'
 import Link from 'next/link';
 import LoginMenu from './LoginMenu'
 
-const NavBar = ({loginMenuToggle, loginMenuVisible, setSignupVisibility}) => (
+const NavBar = ({loginMenuToggle, loginMenuVisible, setSignupVisibility, menuToggle, user, setUser}) => (
     <>
         <div className='navbar'>
+            <span>
+                <img className='hamburger-menu' 
+                src='/hamburger-icon.jpg'
+                onMouseOver={e => (e.currentTarget.src = '/hamburger-icon-orange.jpg')} 
+                onMouseOut={e => (e.currentTarget.src = '/hamburger-icon.jpg')}
+                onClick={menuToggle}
+                alt=""
+                />
+            </span>
             <span>
                 <Link href="/" exact>
                     <img id='main-logo' 
@@ -22,7 +31,13 @@ const NavBar = ({loginMenuToggle, loginMenuVisible, setSignupVisibility}) => (
                 onClick={loginMenuToggle}/>
             </span>
         </div>
-        <LoginMenu visible={loginMenuVisible} loginMenuToggle={loginMenuToggle} setSignupVisibility={setSignupVisibility} />
+        <LoginMenu 
+            visible={loginMenuVisible} 
+            loginMenuToggle={loginMenuToggle} 
+            setSignupVisibility={setSignupVisibility} 
+            setUser={setUser}
+            user={user}
+        />
     </>
 )
 
