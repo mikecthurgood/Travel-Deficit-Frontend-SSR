@@ -1,5 +1,7 @@
-const graphqlUrl = 'https://travel-deficit-node-api.herokuapp.com/graphql'
-// const graphqlUrl = 'http://localhost:8080/graphql'
+const prodUrl = 'https://travel-deficit-node-api.herokuapp.com/graphql'
+const devUrl = 'http://localhost:8080/graphql'
+
+const graphqlUrl = process.env.NODE_ENV === 'development' ? devUrl : prodUrl
 
 const get = (graphqlQuery) => (
     fetch(graphqlUrl, {
@@ -22,15 +24,6 @@ const post = (graphqlQuery, token) =>(
         'Accept'      : `application/json`
         }
     })).then(resp => resp.json())
-
-    // static post = (url, data) =>
-    //     fetch(url, {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(data)
-    //     }).then(resp => resp.json())
 
 const newCountryInfo = (token) => {
         const query = {query: `
@@ -176,10 +169,6 @@ const newCountryInfo = (token) => {
                     loginError.data = resData.errors
                     throw loginError
                 }
-
-                // if (resData.errors) {
-                //     throw new Error('Could not authenticate you!');
-                // }
             
                 localStorage.setItem('token', resData.data.login.token);
                 localStorage.setItem('userId', resData.data.login.userId);
@@ -204,96 +193,24 @@ const newCountryInfo = (token) => {
         })
         return promise
     }
-    
-    // static countryInfo = () => (
-    //     fetch(baseUrl + '/countries-and-info')
-    //         .then(res => res.json())
-    // )
 
-    // static addCountryImage = (countryId, imageUrl) => (
-    //     this.patch(addImageToCountryURL + countryId, { image_url: imageUrl })
-    // )
-
-    // static addCountryToUser = (userId, countryId) => (
-    //     this.post(addCountryToUserURL, { userId, countryId })
-    // )
-
-    // static addCountryToWishList = (userId, countryId) => (
-    //     this.post(addCountryToWishListURL, { userId, countryId })
-    // )
-
-    // static updateAge = (userId, age) => (
-    //     this.patch(usersUrl + userId, { age })
-    // )
-
-    // static login = (fb_id, userData) => (
-    //     fetch(baseUrl + 'login', {
-    //         method: 'POST',
-    //         headers: {
-    //             Authorization: fb_id,
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(userData)
-    //     }).then(resp => resp.json())
-    // )
-
-    // static travelLocations = (query) => (
-    //     fetch(`https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=${query}`, {
-    //         "method": "GET",
-    //         "headers": {
-    //             "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-    //             "x-rapidapi-key": "571c034a1amshba07a35df5f1f2bp163af5jsn9566c59b5b86",
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //         .then(resp => resp.json())
-    //         .catch(err => console.log(err))
-    // )
-
-    // static createFlightSession = (departureLocation, destination, departureDate, returnDate) => (
-    //     this.post(baseUrl + 'countries/recommendations', { departureLocation, destination, departureDate, returnDate })
-    // ).then(console.log)
-
-    // static getQuotes = (destination) => (
-    //     fetch(`https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/UK/GBP/en-UK/LOND-sky/${destination}/anytime?inboundpartialdate=anytime`, {
-    //         "method": "GET",
-    //         "headers": {
-    //             "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-    //             "x-rapidapi-key": "571c034a1amshba07a35df5f1f2bp163af5jsn9566c59b5b86"
-    //         }
-    //     })
-    //         .then(resp => resp.json())
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
-    // )
-
-    // static validate = (fb_id) => (
-    //     fetch(baseUrl + 'validate', {
-    //         headers: {
-    //             Authorization: fb_id
-    //         }
-    //     }).then(resp => resp.json())
-    // )
-
-    // static post = (url, data) =>
-    //     fetch(url, {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(data)
-    //     }).then(resp => resp.json())
-
-    // static patch = (url, data) =>
-    //     fetch(url, {
-    //         method: 'PATCH',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Accept'      : `application/json`
-    //         },
-    //         body: JSON.stringify(data)
-    //     }).then(resp => resp.json())
+    const addUserCountry = async (countryId) => {
+        try {
+            const graphqlQuery = {
+                query: `
+                mutation addOrRemoveUserCountry($countryId: Int!)
+                    addRemoveUserCountry(userInput: {CountryId: 3})
+                `,
+                variables: {
+                    countryId: countryId
+                }
+            }
+            const resData = await post(graphqlQuery, token)
+            console.log(resData)
+        } catch(err) {
+            console.log(err)
+        }
+    }
 
     export default {
         newCountryInfo,

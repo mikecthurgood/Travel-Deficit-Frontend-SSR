@@ -40,11 +40,11 @@ const SideMenu = ({ visible, menuToggle }) => {
                         </div>
                     
                 </div>
-                <div className='menu__panel-item'>
+                {/* <div className='menu__panel-item'>
                     <Link href="/recommendations">
                         <span onClick={() => openSubMenu(2)}><h4 className='nav-link'>Recommendations</h4><h2 className={expandedMenus.includes(0) ? 'active' : ''}>{'>'}</h2></span>
                     </Link>
-                </div>
+                </div> */}
                 <div className='menu__panel-item'>
                     <Link href="/profile">
                         <span onClick={() => openSubMenu(3)}><h4 className='nav-link'>My Profile</h4><h2 className={expandedMenus.includes(0) ? 'active' : ''}>{'>'}</h2></span>

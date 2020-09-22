@@ -110,7 +110,7 @@ const App = ({page}) => {
         localStorage.setItem('countries', country.code)
         localStorage.setItem('countryNames', country.name)
       }
-      // API.addCountryToUser(userID, country.id)
+      // API.addCountryToUser(country.id)
     } else {
       const filteredCountryCodes = visitedCountries.codes.filter(cntry => cntry !== country.code)
       const filteredCountryNames = visitedCountries.names.filter(cntry => cntry !== country.name)

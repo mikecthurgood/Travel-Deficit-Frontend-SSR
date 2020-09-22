@@ -146,7 +146,6 @@ const Signup = ({visible, setSignupVisibility}) => {
                                 placeholder="Choose a username"
                                 onChange={inputChangeHandler}
                                 value={signupForm.username.value}
-                                valid={signupForm.username.valid}
                                 required
                                 // onBlur={inputBlurHandler.bind(this, 'username')}
                                 // touched={signupForm['username'].touched}
@@ -162,7 +161,6 @@ const Signup = ({visible, setSignupVisibility}) => {
                                 type="date"
                                 onChange={inputChangeHandler}
                                 value={signupForm.dob.value}
-                                valid={signupForm.dob.valid}
                                 required
                                 // onBlur={inputBlurHandler.bind(this, 'username')}
                                 // touched={signupForm['username'].touched}
@@ -179,7 +177,6 @@ const Signup = ({visible, setSignupVisibility}) => {
                                 placeholder='Enter your email'
                                 onChange={inputChangeHandler}
                                 value={signupForm.email.value}
-                                valid={signupForm.email.valid}
                                 required
                                 // onBlur={inputBlurHandler.bind(this, 'email')}
                                 // touched={signup ? signupForm['email'].touched : null}
@@ -196,7 +193,6 @@ const Signup = ({visible, setSignupVisibility}) => {
                                 placeholder='Choose your password'
                                 onChange={inputChangeHandler}
                                 value={signupForm.password.value}
-                                valid={signupForm.password.valid}
                                 required
                                 // onBlur={inputBlurHandler.bind(this, 'password')}
                                 // touched={signup ? signupForm['password'].touched : null}
@@ -213,7 +209,6 @@ const Signup = ({visible, setSignupVisibility}) => {
                                 placeholder="Confirm your password"
                                 onChange={inputChangeHandler}
                                 value={signupForm.passwordConfirmation.value}
-                                valid={signupForm.passwordConfirmation.valid}
                                 required
                                 // onBlur={inputBlurHandler.bind(this, 'passwordConfirmation')}
                                 // touched={signupForm['passwordConfirmation'].touched}
