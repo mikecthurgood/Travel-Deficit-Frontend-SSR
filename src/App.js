@@ -41,6 +41,7 @@ const App = ({page}) => {
         setCountries(data.data.countries.countries)
         const authorised = data.data.countries.loggedIn
         if (authorised) setUser({username, userId, token, age: Number(age), isAuth: true})
+        else setUser({ id: '', username: 'Guest', age: '', token: '', isAuth: false})
       })
     const countryCodes = localStorage.getItem('countries')
     const countryNames = localStorage.getItem('countryNames')

@@ -47,6 +47,7 @@ const newCountryInfo = (token) => {
                         code
                         imageUrl
                     }
+                    loggedIn
                 }
             }
         `}
