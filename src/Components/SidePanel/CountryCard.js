@@ -24,17 +24,17 @@ const CountryCard = ({ country, closeSideBar, addOrRemoveCountry, visitedCountri
                         />
                     <div className='sidepanel-buttons'>
                         <button
-                            className={`add-country-button ${visitedCountries.includes(country.code) ? 'added' : ''}`}
+                            className='add-country-button added'
                             onClick={() => addOrRemoveCountry(country.name)}
                         >
                             {!visitedCountries.includes(country.code) ? 'Add To Visited' : 'Remove From Visited'}
                         </button>
-                        {!visitedCountries.includes(country.code) &&
+                        {/* {!visitedCountries.includes(country.code) &&
                             <button                                 className='add-to-wishlist-button'
                                 onClick={() => addToWishList(country.id)}
                             >
                                 {!wishlist.includes(country.id) ? 'Add To Wishlist' : 'Remove From Wishlist'}
-                            </button>}
+                            </button>} */}
                         
                     </div>
                 </div>

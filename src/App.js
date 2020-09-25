@@ -92,6 +92,7 @@ const App = ({page}) => {
   const logOutHandler = (e) => {
     e.preventDefault()
     setUser({userId: '', userName: 'Guest', age: '', token: '', isAuth: false})
+    setVisitedCountries({codes: [], names: []})
     loginMenuToggle()
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
