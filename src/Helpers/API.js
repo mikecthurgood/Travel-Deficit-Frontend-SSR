@@ -14,8 +14,9 @@ const get = (graphqlQuery) => (
         }
     })).then(resp => resp.json())
 
-const post = (graphqlQuery, token) =>(
-    fetch(graphqlUrl, {
+const post = async (graphqlQuery) => {
+    const token = localStorage.getItem('token')
+    return await fetch(graphqlUrl, {
         method: 'POST',
         body: JSON.stringify(graphqlQuery),
         headers: {
@@ -23,9 +24,9 @@ const post = (graphqlQuery, token) =>(
         'Content-Type': 'application/json',
         'Accept'      : `application/json`
         }
-    })).then(resp => resp.json())
+    }).then(resp => resp.json())}
 
-const newCountryInfo = (token) => {
+const newCountryInfo = async (token) => {
         const query = {query: `
             {
                 countries {
@@ -41,11 +42,12 @@ const newCountryInfo = (token) => {
                         imageUrl
                     }
                     loggedIn
+                    visitedCountries
                 }
             }
         `}
 
-        return post(query, token)
+        return await post(query, token)
     }
 
     const signup = async (userInfo) => {
@@ -198,15 +200,33 @@ const newCountryInfo = (token) => {
         try {
             const graphqlQuery = {
                 query: `
-                mutation addOrRemoveUserCountry($countryId: Int!)
-                    addRemoveUserCountry(userInput: {CountryId: 3})
+                    mutation addOrRemoveUserCountry($countryId: Int!) {
+                        addRemoveUserCountry(userInput: {CountryId: $countryId})
+                    }
                 `,
                 variables: {
-                    countryId: countryId
+                    countryId: Number(countryId)
                 }
             }
-            const resData = await post(graphqlQuery, token)
-            console.log(resData)
+            const resData = await post(graphqlQuery)
+        } catch(err) {
+            console.log(err)
+        }
+    }
+
+    const addCountryToWishlist = async (countryId) => {
+        try {
+            const graphqlQuery = {
+                query: `
+                    mutation addOrRemoveWishlist($countryId: Int!) {
+                        addRemoveWishlist(userInput: {CountryId: $countryId})
+                    }
+                `,
+                variables: {
+                    countryId: Number(countryId)
+                }
+            }
+            const resData = await post(graphqlQuery)
         } catch(err) {
             console.log(err)
         }
@@ -215,5 +235,7 @@ const newCountryInfo = (token) => {
     export default {
         newCountryInfo,
         signup,
-        login
+        login,
+        addUserCountry,
+        addCountryToWishlist,
     }

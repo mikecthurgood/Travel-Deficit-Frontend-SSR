@@ -39,7 +39,7 @@ const AddCountry = ({ selectedCountry, sidebarVisible, closeSideBar, handleSideB
                         <div className='filter-button'><button className={`${filter === 'visited' ? 'active' : ''}`} onClick={() => setFilter('visited')}>Visited</button></div>
                         <div className='filter-button'><button className={`${filter === 'not-visited' ? 'active' : ''}`} onClick={() => setFilter('not-visited')}>Not Visited</button></div>
                     </div>
-                    <input type="text" autocomplete="off" placeholder='Start typing to filter by name' onChange={handleFilterChange} id='add-country-search-filter' />
+                    <input type="text" autoComplete="off" placeholder='Start typing to filter by name' onChange={handleFilterChange} id='add-country-search-filter' />
                     <div className='country-list-items'>
                         {countries.length > 0 && filteredCountries.map(country =>
                             <div

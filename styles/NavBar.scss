@@ -52,41 +52,60 @@ $darkBlue: #475E7F;
         height: 30px;
         cursor: pointer;
       }
-    }
 
-    }
-        .secondary-nav{
-          // height: 6px;
-          height: 6px;
-          background-color: $orange;
-          position: fixed;
-          top: 60px;
-          left: 0;
-          width: 100%;
-          display: flex;
-          z-index: 999;
-          overflow-y: hidden;
-          
-          div {
-            width: 33.3%;
-            position: relative;
-            top: 0;
-            margin: auto;
-      
-          }
-            
-        h4 {
-          cursor: pointer;
-          color: white;
-          font-size: medium;
-          margin: auto;
-  
-          &:hover {
-            color: #475E7F;
-            font-size: medium;
-          }
+      .clear-guest-button {
+        position: relative;
+        top: -3px;
+        padding: 5px;
+        border-radius: 5px;
+        margin: 3px;
+        margin-right: 20px;
+        background-color: $orange;
+        color: white;
+        margin-bottom: 5px;
+        &:hover {
+          filter: brightness(110%);
+        }
+        &:active, &:focus {
+          outline: none;
+          text-decoration: none;
         }
       }
+    }
+    
+}
+  .secondary-nav{
+    // height: 6px;
+    height: 6px;
+    background-color: $orange;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    z-index: 999;
+    overflow-y: hidden;
+    
+    div {
+      width: 33.3%;
+      position: relative;
+      top: 0;
+      margin: auto;
+
+    }
+      
+  h4 {
+    cursor: pointer;
+    color: white;
+    font-size: medium;
+    margin: auto;
+
+    &:hover {
+      color: #475E7F;
+      font-size: medium;
+    }
+  }
+}
 
 .login__menu {
   width: 200px;

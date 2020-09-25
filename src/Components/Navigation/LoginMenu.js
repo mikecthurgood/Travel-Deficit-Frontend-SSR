@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Link from 'next/link';
 import API from '../../Helpers/API'
 
-const LoginMenu = ({loginMenuToggle, setUser, user, visible, setSignupVisibility}) => {
+const LoginMenu = ({loginMenuToggle, setUser, loginHandler, logOutHandler, user, visible, setSignupVisibility}) => {
     
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -11,34 +11,11 @@ const LoginMenu = ({loginMenuToggle, setUser, user, visible, setSignupVisibility
         if (e.target.name === 'username') setUsername(e.target.value)
         else setPassword(e.target.value)
     }    
-    const loginHandler = async (e) => {
-        e.preventDefault()
-        const loginResult = await API.login({username, password})
-        if (loginResult.isAuth) {
-            const {userId, username, age, token, isAuth} = loginResult
-            setUser({userId, username, age, token, isAuth})
-            loginMenuToggle()
-        }
-        console.log('loginResult',loginResult)
-        // console.log('username:', username, 'password:', password)
-    }
 
     const handleSignupLinkClick = () => {
         setSignupVisibility(true)
         loginMenuToggle()
     }
-
-    const logOutHandler = (e) => {
-        e.preventDefault()
-        setUser({userId: '', userName: 'Guest', age: '', token: '', isAuth: false})
-        loginMenuToggle()
-        localStorage.removeItem('token');
-        localStorage.removeItem('userId');
-        localStorage.removeItem('userName');
-        localStorage.removeItem('userAge');
-    }
-    
-
 
     return (
         <>
@@ -57,10 +34,10 @@ const LoginMenu = ({loginMenuToggle, setUser, user, visible, setSignupVisibility
             )
         :
             (<>
-                <form className='login-form' onSubmit={loginHandler}>
+                <form className='login-form' onSubmit={e => loginHandler(e, username, password)}>
                 <input type="text" name='username' placeholder='Username or email' onChange={handleFieldChange} />
                 <input type="password" name='password' placeholder='Password' onChange={handleFieldChange}/>
-                <button onClick={loginHandler}>Login</button>
+                <button onClick={e => loginHandler(e, username, password)}>Login</button>
             </form>
             <p>No account?</p>
             <p className='signup-link' onClick={handleSignupLinkClick}>Signup</p>

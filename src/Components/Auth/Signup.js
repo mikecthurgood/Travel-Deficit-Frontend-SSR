@@ -100,7 +100,6 @@ const Signup = ({visible, setSignupVisibility}) => {
             submitData
         })
 
-        console.log('response', response)
         if (response && response.error) {
             const mappedErrors = response.error.map(error => {
                 return {code: error.code, message: error.message}

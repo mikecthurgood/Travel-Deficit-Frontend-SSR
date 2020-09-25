@@ -107,6 +107,17 @@ $darkBlue: #475E7F;
                             .leaderboard-profile-image {
                                 height: 30px;
                                 // margin: 10px 0;
+                                &.test {
+                                    background-color: $blue;
+                                    width: 30px;
+                                    margin-right: 15px;
+                                    border-radius: 50%;
+                                    p {
+                                        width: 100%;
+                                        color: white;
+                                        text-align: center;
+                                    }
+                                }
                             }
                             .username, .ranking-score {
                                 margin: auto;

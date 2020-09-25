@@ -36,30 +36,11 @@ const CountryCard = ({ country, closeSideBar, addOrRemoveCountry, visitedCountri
                                 {!wishlist.includes(country.id) ? 'Add To Wishlist' : 'Remove From Wishlist'}
                             </button>}
                         
-                        </div>
-    
-                        {/* <button
-                            fluid className='add-country-button'
-                            onClick={() => addOrRemoveCountry(country.name)}
-                        >
-                            {!visitedCountries.includes(country.code) ? 'Add To Visited' : 'Remove From Visited'}
-                        </button>
-                        {!visitedCountries.includes(country.code) &&
-                            <button fluid
-                                className='add-to-wish-list'
-                                onClick={() => addToWishList(country.id)}
-                            >
-                                {!wishlist.includes(country.id) ? 'I Want To Go Here' : 'Remove From Wishlist'}
-                            </button>}
-                        <button fluid
-                            className='close-sidebar-button'
-                            onClick={closeSideBar}>
-                            Close
-                        </button> */}
-                        </div>
+                    </div>
+                </div>
     
                 }
-                </div>
+            </div>
         )
     )
 }

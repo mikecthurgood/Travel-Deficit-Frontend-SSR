@@ -10,7 +10,7 @@ import ScrollContainer from 'react-indiana-drag-scroll'
 
 
 
-const Profile = ({ countries, visitedCountries, userName, userAge, badges, userImage, bannerNumber, updateAge, updateGuestAge, wishlist, page }) => {
+const Profile = ({ countries, visitedCountries, user, badges, userImage, updateAge, updateGuestAge }) => {
 
     const filteredCountries = countries.length > 0 && countries.filter(country => visitedCountries.includes(country.code)).sort((a, b) => a.name.localeCompare(b.name))
     // const continents = filteredCountries.length > 0 && [...new Set(filteredCountries.map(country => country.continent))].sort()
@@ -23,8 +23,7 @@ const Profile = ({ countries, visitedCountries, userName, userAge, badges, userI
                     <UserInfo
                         countries={countries}
                         visitedCountries={visitedCountries}
-                        userName={userName}
-                        userAge={userAge}
+                        user={user}
                         badges={badges}
                         userImage={userImage}
                         updateAge={updateAge}
@@ -35,8 +34,7 @@ const Profile = ({ countries, visitedCountries, userName, userAge, badges, userI
                     <LeaderBoard
                     countries={countries}
                     visitedCountries={visitedCountries}
-                    userName={userName}
-                    userAge={userAge}
+                    user={user}
                     // badges={badges}
                     userImage={userImage}
                     />

@@ -3,7 +3,7 @@ import { Card, Button } from 'semantic-ui-react'
 
 const UserInfo = (props) => {
 
-    const { countries, visitedCountries, userName, userAge, badges, userImage, updateAge } = props
+    const { countries, visitedCountries, user, badges, userImage, updateAge } = props
     const filteredCountries = countries.length > 0 && countries.filter(country => visitedCountries.includes(country.code)).sort((a, b) => a.name.localeCompare(b.name))
     const continents = filteredCountries.length > 0 && [...new Set(filteredCountries.map(country => country.continent))].sort()
 
@@ -26,17 +26,18 @@ const UserInfo = (props) => {
                         <h3>My Stats</h3>
                     </div>
                     <div className='user-details'>
-                        <p><strong>Username</strong>: {userName}</p>
+                        <p><strong>Username</strong>: {user.username}</p>
                         <>
                             <p><strong>Age</strong>: 
-                                <span className='age-form-span'>{` ${userAge}`}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    {ageFormVisible &&
+                                <span className='age-form-span'>{` ${user.age}`}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    {!user.isAuth && ageFormVisible &&
                                         <form onSubmit={handleAgeChange} >
                                             <input className='age-form' size="4" type="number" name='ageInput' />
                                         </form>}
-                                    <button
+                                    {!user.isAuth && (<button
                                         color={'blue'}
-                                        onClick={toggleAgeForm}>{ageFormVisible ? 'Cancel' : userAge ? 'Update' : 'Add Age'}</button>
+                                        onClick={toggleAgeForm}>{ageFormVisible ? 'Cancel' : user.age ? 'Update' : 'Add Age'}
+                                    </button>)}
                                 </span>
                                 {/* :
                                 <span className='age-form-span'>
@@ -51,7 +52,7 @@ const UserInfo = (props) => {
                                 </span> */}
                             </p>
                         </>
-                        <p><strong>Travel Deficit</strong>: {userAge ? visitedCountries.length - userAge : <em>Add age to calculate</em> } </p>
+                        <p><strong>Travel Deficit</strong>: {user.age ? visitedCountries.length - user.age : <em>Add age to calculate</em> } </p>
                         <p><strong>Countries Visited</strong>: {visitedCountries.length}</p>
                         <p><strong>Regions Visited</strong>: {continents.length}</p>
                         {/* <p><strong>Badges Earned</strong>: {badges && badges.length > 0 ? badges.length : <span>No badges earned yet</span>}</p> */}

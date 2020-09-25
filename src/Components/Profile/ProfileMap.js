@@ -21,18 +21,18 @@ const ProfileMap = ({ countries, visitedCountries }) => {
                     </div>
                     <div className='profile-map-flags'>
                         {filteredCountries.map(cnt => (
-                            <>
-                                <div class="profile-map-flag">
-                                    <div class="profile-map-flag-inner">
-                                        <div class="profile-map-flag-front">
+                            <div key={cnt.code}>
+                                <div className="profile-map-flag">
+                                    <div className="profile-map-flag-inner">
+                                        <div className="profile-map-flag-front">
                                         <img src={`/world-flags/${cnt.code}.png`} alt={cnt.name}/>
                                         </div>
-                                        <div class="profile-map-flag-back">
+                                        <div className="profile-map-flag-back">
                                         <h4>{cnt.name}</h4>
                                         </div>
                                     </div>
                                 </div>
-                            </>
+                            </div>
                         ))}
                     </div>
                 </div>
